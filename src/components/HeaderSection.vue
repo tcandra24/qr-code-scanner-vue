@@ -5,7 +5,7 @@ const isNavOpen = ref(false);
 </script>
 
 <template>
-  <nav class="bg-indigo-500 border-gray-200">
+  <nav class="bg-emerald-500 border-gray-200">
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
@@ -48,31 +48,31 @@ const isNavOpen = ref(false);
         id="navbar-default"
       >
         <ul
-          class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-indigo-500 border-indigo-500"
+          class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-emerald-500 border-emerald-500"
         >
           <li>
-            <a
-              href="/"
+            <route-link
+              :to="{ name: 'home' }"
               class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >
               Home
-            </a>
+            </route-link>
           </li>
           <li>
-            <a
-              href="/groups"
+            <route-link
+              :to="{ name: 'group.index' }"
               class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >
               Groups
-            </a>
+            </route-link>
           </li>
           <li>
-            <a
-              href="/setting"
+            <route-link
+              :to="{ name: 'setting.index' }"
               class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >
               Setting
-            </a>
+            </route-link>
           </li>
         </ul>
       </div>

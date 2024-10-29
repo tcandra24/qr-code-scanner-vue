@@ -1,31 +1,31 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-const = routes = [
+const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("../views/auth/Register.vue"),
+    component: () => import("../view/home/Index.vue"),
   },
   {
     path: "/group",
     name: "group.index",
-    component: () => import("../views/auth/Register.vue"),
+    component: () => import("../view/group/Index.vue"),
   },
   {
     path: "/group/:slug",
     name: "group.show",
-    component: () => import("../views/auth/Register.vue"),
+    component: () => import("../view/group/Show.vue"),
   },
   {
     path: "/setting",
-    name: "setting",
-    component: () => import("../views/auth/Register.vue"),
+    name: "setting.index",
+    component: () => import("../view/setting/Index.vue"),
   },
-]
+];
 
 const router = createRouter({
-  history: createWebHistory,
-  routes
-})
+  history: createWebHistory(),
+  routes,
+});
 
-export default routes
+export default router;
