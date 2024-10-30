@@ -1,3 +1,7 @@
+<script setup>
+import LayoutDefault from "../../layouts/Default.vue";
+</script>
+
 <template>
-  <div>Ini Group</div>
+  <LayoutDefault>Ini Group</LayoutDefault>
 </template>

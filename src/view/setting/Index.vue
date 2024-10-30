@@ -1,3 +1,7 @@
+<script setup>
+import LayoutDefault from "../../layouts/Default.vue";
+</script>
+
 <template>
-  <div>Ini Setting</div>
+  <LayoutDefault>Ini Setting</LayoutDefault>
 </template>

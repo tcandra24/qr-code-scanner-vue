@@ -43,7 +43,6 @@ const isNavOpen = ref(false);
       </button>
       <div
         class="w-full md:block md:w-auto"
-        }
         :class="{ hidden: !isNavOpen }"
         id="navbar-default"
       >
@@ -51,28 +50,28 @@ const isNavOpen = ref(false);
           class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-emerald-500 border-emerald-500"
         >
           <li>
-            <route-link
+            <router-link
               :to="{ name: 'home' }"
               class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >
               Home
-            </route-link>
+            </router-link>
           </li>
           <li>
-            <route-link
+            <router-link
               :to="{ name: 'group.index' }"
               class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >
               Groups
-            </route-link>
+            </router-link>
           </li>
           <li>
-            <route-link
+            <router-link
               :to="{ name: 'setting.index' }"
               class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >
               Setting
-            </route-link>
+            </router-link>
           </li>
         </ul>
       </div>
