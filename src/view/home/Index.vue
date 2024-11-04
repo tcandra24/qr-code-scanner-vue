@@ -3,12 +3,21 @@ import LayoutDefault from "../../layouts/Default.vue";
 import { QrcodeStream } from "vue-qrcode-reader";
 import { ref, computed } from "vue";
 
-const result = ref("");
+import { useAppStore } from "../../stores/appStore";
+import { storeToRefs } from "pinia";
+
+const store = useAppStore();
+const { base_url, scan_end_point, token } = storeToRefs(store);
+
+const resultScan = ref("");
 const error = ref("");
 
-function onDetect(detectedCodes) {
-  console.log(detectedCodes);
-  result.value = JSON.stringify(detectedCodes.map((code) => code.rawValue));
+function onScan(detectedCodes) {
+  console.log(base_url.value);
+  console.log(scan_end_point.value);
+  console.log(token.value);
+  const arrayResult = detectedCodes.map((code) => code.rawValue);
+  resultScan.value = arrayResult[0];
 }
 
 function onError(err) {
@@ -161,7 +170,7 @@ const selectedBarcodeFormats = computed(() => {
               :track="trackFunctionSelected.value"
               :formats="selectedBarcodeFormats"
               @error="onError"
-              @detect="onDetect"
+              @detect="onScan"
               @camera-on="onCameraReady"
             />
           </div>
@@ -180,6 +189,7 @@ const selectedBarcodeFormats = computed(() => {
             className="w-96 border-2 rounded border-gray-300"
             cols="30"
             rows="5"
+            v-model="resultScan"
           ></textarea>
         </div>
       </div>
