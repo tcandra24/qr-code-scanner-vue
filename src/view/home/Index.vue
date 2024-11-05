@@ -1,18 +1,65 @@
 <script setup>
 import LayoutDefault from "../../layouts/Default.vue";
 import QrCode from "../../components/QrCode.vue";
+
 import { ref } from "vue";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 
 import { useAppStore } from "../../stores/appStore";
 import { storeToRefs } from "pinia";
+import Swal from "sweetalert2";
+
+import api from "../../services/api";
 
 const store = useAppStore();
 const { base_url, scan_end_point, token } = storeToRefs(store);
 
 const resultScan = ref("");
 
-const onScan = (code) => {
+const onScan = async (code) => {
+  const value = code;
   resultScan.value = code;
+
+  if (base_url.value && scan_end_point.value) {
+    try {
+      const apiService = api(base_url.value);
+      apiService.defaults.headers.common["Authorization"] = token.value;
+
+      const { data } = await apiService.post(scan_end_point.value, {
+        token: value,
+      });
+
+      console.log(data);
+
+      if (!data.success) {
+        throw new Error(data.message);
+      }
+
+      const badgeHtml = data.data.seats
+        .map(
+          (tag) =>
+            `<span class="bg-green-100 text-green-800 font-medium me-2 px-2.5 py-0.5 rounded">
+              ${tag.name}
+            </span>`
+        )
+        .join(" ");
+
+      Swal.fire({
+        title: data.message,
+        html: `
+            <p class="text-gray-700">${data.data.registration_number}</p>
+            <div class="flex justify-center my-3">
+              ${badgeHtml}
+            </div>
+          `,
+        showConfirmButton: true,
+        confirmButtonText: "Ok",
+      });
+    } catch (error) {
+      toast.error(error);
+    }
+  }
 };
 
 const isUrl = (value) => {
