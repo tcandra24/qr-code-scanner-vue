@@ -8,12 +8,16 @@ const { changeSetting } = store;
 
 const base_url = ref("");
 const scan_end_point = ref("");
+const group_end_point = ref("");
+const group_detail_end_point = ref("");
 const token = ref("");
 
 const submit = () => {
   const payload = {
     base_url: base_url.value,
     scan_end_point: scan_end_point.value,
+    group_end_point: group_end_point.value,
+    group_detail_end_point: group_detail_end_point.value,
     token: token.value,
   };
 
@@ -74,7 +78,7 @@ const submit = () => {
             <input
               class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
               id="groupEndPoint"
-              name="group_end_point"
+              v-model="group_end_point"
               type="text"
               placeholder="Group End Point"
             />
@@ -89,7 +93,7 @@ const submit = () => {
             <input
               class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="groupDetailEndPoint"
-              name="group_detail_end_point"
+              v-model="group_detail_end_point"
               type="text"
               placeholder="Group Detail End Point"
             />
