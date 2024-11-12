@@ -26,7 +26,9 @@ const getData = () => {
       };
       storeGroup.getGroups(payload);
     } catch (error) {
-      toast.error(error);
+      toast.error(error.response.data.message, {
+        theme: "colored",
+      });
     }
   }
 };
