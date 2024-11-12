@@ -20,8 +20,20 @@ export const useGroupStore = defineStore("group", () => {
     groups.value = data.data;
   };
 
-  const getGroup = (slug) => {
-    //
+  const getGroup = async (
+    slug,
+    { base_url, group_detail_end_point, token }
+  ) => {
+    const apiService = api(base_url);
+    apiService.defaults.headers.common["Authorization"] = token;
+
+    const { data } = await apiService.get(`${group_detail_end_point}/${slug}`);
+
+    if (!data.success) {
+      throw new Error(data.message);
+    }
+
+    group.value = data.data;
   };
 
   return {
