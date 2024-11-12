@@ -30,8 +30,6 @@ const onScan = async (code) => {
         token: value,
       });
 
-      console.log(data);
-
       if (!data.success) {
         throw new Error(data.message);
       }
@@ -57,6 +55,7 @@ const onScan = async (code) => {
         confirmButtonText: "Ok",
       });
     } catch (error) {
+      console.log(error);
       toast.error(error);
     }
   }
@@ -81,15 +80,6 @@ const isUrl = (value) => {
             className="relative border-8 overflow-hidden border-gray-600 bg-gray-60 rounded-3xl flex flex-col w-96 h-96 justify-center items-center bg-no-repeat bg-cover shadow-2xl"
           >
             <QrCode @onScan="onScan" />
-          </div>
-        </div>
-        <div className="relative flex gap-2">
-          <div className="w-1/4">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Test
-            </button>
           </div>
         </div>
         <div v-if="isUrl(resultScan)" className="relative flex my-3">
