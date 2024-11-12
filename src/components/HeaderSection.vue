@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 
+import imgLogo from "../assets/logo.png";
+
 const isNavOpen = ref(false);
 </script>
 
@@ -13,11 +15,7 @@ const isNavOpen = ref(false);
         :to="{ name: 'home' }"
         class="flex items-center space-x-3 rtl:space-x-reverse"
       >
-        <span
-          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-        >
-          QrCode Scanner
-        </span>
+        <img className="self-center w-48" :src="imgLogo" alt="Logo" />
       </router-link>
       <button
         @click="isNavOpen = !isNavOpen"
