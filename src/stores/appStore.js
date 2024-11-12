@@ -18,6 +18,14 @@ export const useAppStore = defineStore(
       token.value = payload.token;
     };
 
+    const resetSetting = () => {
+      base_url.value = "";
+      scan_end_point.value = "";
+      group_end_point.value = "";
+      group_detail_end_point.value = "";
+      token.value = "";
+    };
+
     return {
       base_url,
       scan_end_point,
@@ -25,6 +33,7 @@ export const useAppStore = defineStore(
       group_detail_end_point,
       token,
       changeSetting,
+      resetSetting,
     };
   },
   {

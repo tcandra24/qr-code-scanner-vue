@@ -1,5 +1,6 @@
 <script setup>
 import LayoutDefault from "../../layouts/Default.vue";
+import { onMounted } from "vue";
 import { useAppStore } from "../../stores/appStore";
 import { useGroupStore } from "../../stores/groupStore";
 import { storeToRefs } from "pinia";
@@ -8,8 +9,7 @@ import { useRoute } from "vue-router";
 
 const store = useAppStore();
 const storeGroup = useGroupStore();
-const { base_url, group_end_point, group_detail_end_point, token } =
-  storeToRefs(store);
+const { base_url, group_detail_end_point, token } = storeToRefs(store);
 const { group } = storeToRefs(storeGroup);
 
 const route = useRoute();
@@ -20,10 +20,10 @@ const getData = () => {
   try {
     const payload = {
       base_url: base_url.value,
-      group_end_point: group_end_point.value,
+      group_detail_end_point: group_detail_end_point.value,
       token: token.value,
     };
-    storeGroup.getGroups(slug, payload);
+    storeGroup.getGroup(slug, payload);
   } catch (error) {
     toast.error(error);
   }
@@ -71,7 +71,7 @@ onMounted(() => {
                     : 'bg-red-300 text-red-900',
                 ]"
               >
-                {registration.is_scan}
+                {{ registration.is_scan }}
               </span>
             </div>
           </div>
