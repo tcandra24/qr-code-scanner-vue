@@ -71,9 +71,9 @@ const readFile = () => {
 
 <template>
   <LayoutDefault>
-    <div className="max-w-lg rounded mx-auto overflow-hidden mb-5">
-      <div className="w-full max-w-lg">
-        <div className="flex flex-wrap">
+    <div class="max-w-lg rounded mx-auto overflow-hidden mb-5">
+      <div class="w-full max-w-lg">
+        <div class="flex flex-wrap">
           <SettingDisplay title="Base URL" :value="base_url_state" />
           <SettingDisplay title="Token" :value="token_state" />
           <SettingDisplay
