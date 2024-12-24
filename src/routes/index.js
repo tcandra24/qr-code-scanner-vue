@@ -17,6 +17,11 @@ const routes = [
     component: () => import("../view/group/Show.vue"),
   },
   {
+    path: "/generator",
+    name: "generator.index",
+    component: () => import("../view/generator/Index.vue"),
+  },
+  {
     path: "/setting",
     name: "setting.index",
     component: () => import("../view/setting/Index.vue"),
