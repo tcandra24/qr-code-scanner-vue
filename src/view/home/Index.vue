@@ -21,6 +21,7 @@ const isCopied = ref(false);
 const onScan = async (code) => {
   const value = code;
   resultScan.value = code;
+  isCopied.value = false;
 
   if (base_url.value && scan_end_point.value) {
     try {
